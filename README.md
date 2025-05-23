@@ -39,9 +39,9 @@ This project analyzes and predicts customer churn using Python and machine learn
 
 📷 *Example Visuals:*
 
-*![Tenure Histogram](histOfTenure.png)
-
-* Heatmap of Feature Correlations
+![Tenure Histogram](histOfTenure.png)
+![Dist Contract Type](distofcontractType.png)
+![HeatMap of Correlation Matris](heatmap.png)
 
 ---
 
