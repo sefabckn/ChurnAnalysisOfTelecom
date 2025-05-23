@@ -39,8 +39,8 @@ This project analyzes and predicts customer churn using Python and machine learn
 
 📷 *Example Visuals:*
 
-* Distribution of Customer Tenure
-* Churn vs. Contract Type Bar Chart
+*![Tenure Histogram](histOfTenure.png)
+
 * Heatmap of Feature Correlations
 
 ---
