@@ -99,7 +99,7 @@ with st.form("customer_score"):
             continue
         if column in {"tenure", "MonthlyCharges", "TotalCharges"}:
             customer[column] = {"tenure": tenure, "MonthlyCharges": monthly_charges, "TotalCharges": total_charges}[column]
-        elif data[column].dtype == "object":
+        elif not pd.api.types.is_numeric_dtype(data[column]):
             customer[column] = st.selectbox(column, sorted(data[column].dropna().astype(str).unique()))
         else:
             customer[column] = data[column].median()
