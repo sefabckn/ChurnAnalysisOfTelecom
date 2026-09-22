@@ -1,0 +1,12 @@
+.git
+.gitignore
+.venv
+__pycache__
+.pytest_cache
+*.pyc
+*.pyo
+*.ipynb
+Visuals
+README.md
+Dockerfile
+.dockerignore

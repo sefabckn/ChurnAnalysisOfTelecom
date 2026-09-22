@@ -1,14 +1,17 @@
 
-## 📉 Telecom Customer Churn Analysis with Python
+## Telecom Customer Churn Intelligence
 
 ### 🔍 Project Overview
 
-This project analyzes and predicts customer churn using Python and machine learning techniques. It uses real-world telecom data to identify the key drivers of churn and build classification models to proactively prevent customer loss.
+This project analyzes and predicts customer churn using a reusable Python pipeline and a Streamlit dashboard. It uses the Telco Customer Churn dataset to identify churn drivers, compare customer segments, and score individual retention risk.
 
 ### 📁 Project Structure
 
-* 📄 `ChurnAnalysis.ipynb`: Full Python code in a clean and well-documented Colab notebook.
-* 📊 Data Source: [Telco Customer Churn Dataset on Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
+* 📊 `app.py`: Streamlit dashboard for segment analysis and customer scoring.
+* 🧠 `src/churn_analysis/pipeline.py`: Shared data preparation and random forest model pipeline.
+* 🧪 `tests/test_pipeline.py`: Automated checks for cleaning and scoring.
+* 📓 `churnanalysis.ipynb`: Exploratory analysis and original research notes.
+* 📊 Data source: [Telco Customer Churn Dataset on Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
 
 ---
 
@@ -83,35 +86,57 @@ This project analyzes and predicts customer churn using Python and machine learn
 
 ---
 
-### 📦 Requirements
+### Requirements
 
 ```bash
-Python 3.x
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
+Python 3.10+
+See `requirements.txt` for the complete dependency list.
 ```
 
 Install via:
 
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn
+pip install -r requirements.txt
 ```
 
 ---
 
-### ▶️ How to Run
+### Run the dashboard
 
-1. Clone this repository
+1. Install dependencies:
 
 ```bash
-git clone https://github.com/sefabckn/churn-analysis.git
+pip install -r requirements.txt
 ```
 
-2. Open the `ChurnAnalysis.ipynb` in Google Colab or Jupyter Notebook
-3. Run the cells step-by-step to see the analysis and modelling
+2. Start Streamlit:
+
+```bash
+streamlit run app.py
+```
+
+3. Upload `Telco-Customer-Churn.csv` in the sidebar, or place it at the project root. The CSV must include `Churn`, `tenure`, `MonthlyCharges`, and `TotalCharges`.
+
+### Run with Docker
+
+Build and start the dashboard container:
+
+```bash
+docker build -t telecom-churn-dashboard .
+docker run --rm -p 8501:8501 telecom-churn-dashboard
+```
+
+Open `http://localhost:8501` and upload the dataset in the sidebar. To use a local CSV automatically, mount it into the container:
+
+```bash
+docker run --rm -p 8501:8501 -v "${PWD}/Telco-Customer-Churn.csv:/app/Telco-Customer-Churn.csv:ro" telecom-churn-dashboard
+```
+
+### Run tests
+
+```bash
+pytest
+```
 
 ---
 
